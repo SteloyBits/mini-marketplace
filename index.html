@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Marketplace - Products</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="container">
+        <section id="products-section" aria-labelledby="products-heading">
+            <div class="products-header">
+                <h1 id="products-heading">Products</h1>
+                <div class="products-controls">
+                    <input
+                        type="search"
+                        id="search-input"
+                        placeholder="Search products..."
+                        aria-label="Search products"
+                    >
+                    <select id="category-filter" aria-label="Filter by category">
+                        <option value="all">All Categories</option>
+                    </select>
+                </div>
+            </div>
+
+            <p id="products-loading" class="status-message" hidden>Loading products...</p>
+
+            <div id="products-error" class="error-box" hidden>
+                <p id="products-error-text">Unable to load products. Please try again.</p>
+                <button type="button" id="products-retry-btn">Try Again</button>
+            </div>
+
+            <p id="products-empty" class="status-message" hidden>No products match your search.</p>
+
+            <div id="products-grid" class="products-grid"></div>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
