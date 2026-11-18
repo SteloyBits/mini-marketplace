@@ -47,6 +47,76 @@ function createProductCard(product) {
     return card;
 }
 
+function renderProducts(products) {
+    productsGrid.innerHTML = "";
+
+    if (products.length === 0) {
+        emptyMessage.hidden = false;
+        return;
+    }
+
+    emptyMessage.hidden = true;
+
+    const cards = products.map(createProductCard);
+    cards.forEach(function (card) {
+        productsGrid.appendChild(card);
+    });
+}
+
+function populateCategories(products) {
+    categoryFilter.innerHTML = '<option value="all">All Categories</option>';
+    const categories = [];
+
+    products.forEach(function (product) {
+        if (!categories.includes(product.category)) {
+            categories.push(product.category);
+        }
+    });
+
+    categories.forEach(function (category) {
+        const option = document.createElement("option");
+        option.value = category;
+        option.textContent = category;
+        categoryFilter.appendChild(option);
+    });
+}
+
+function filterProducts() {
+    const searchText = searchInput.value.trim().toLowerCase();
+    const selectedCategory = categoryFilter.value;
+
+    const filtered = allProducts.filter(function (product) {
+        const matchesSearch = product.title.toLowerCase().includes(searchText);
+        const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+    });
+
+    renderProducts(filtered);
+}
+
+function handleAddToCartClick(event) {
+    if (!event.target.classList.contains("add-to-cart-btn")) {
+        return;
+    }
+
+    const button = event.target;
+    const productId = Number(button.dataset.id);
+    const selectedProduct = allProducts.find(function (product) {
+        return product.id === productId;
+    });
+
+    if (!selectedProduct) {
+        return;
+    }
+
+    window.dispatchEvent(new CustomEvent("add-to-cart", { detail: selectedProduct }));
+
+    button.textContent = "Added!";
+    setTimeout(function () {
+        button.textContent = "Add to Cart";
+    }, 800);
+}
+
 async function loadProductData(url) {
     const response = await fetch(url);
     if (!response.ok) {
