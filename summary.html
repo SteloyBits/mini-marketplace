@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Marketplace - Order Summary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+        <section id="summary-section" aria-labelledby="summary-heading">
+            <!-- Top Navigation Bar -->
+            <header class="top-bar">
+                <a href="index.html" class="nav-link" aria-label="Back to store">
+                    ← Store
+                </a>
+                <span class="page-badge">Order Summary</span>
+            </header>
+
+            <!-- TODO 1: Order Confirmation Banner -->
+            <div class="summary-banner">
+                <h1 id="summary-heading" class="summary-title">Order Confirmation</h1>
+                <p class="summary-subtitle">Your order details will appear below.</p>
+                <div class="order-id-badge">
+                    Order ID: <strong id="summary-order-id">-</strong>
+                </div>
+            </div>
+
+            <!-- Loading and Error State Indicators -->
+            <p id="summary-loading" class="status-message" hidden>Loading order summary...</p>
+
+            <div id="summary-error" class="error-box" hidden>
+                <p id="summary-error-text">Unable to load order summary. Please try again.</p>
+                <div class="error-actions">
+                    <button type="button" id="summary-retry-btn">Try Again</button>
+                    <a href="index.html" class="button-link">Browse Products</a>
+                </div>
+            </div>
+
+            <!-- TODO 3: Summary Details Content Container -->
+            <div id="summary-content" class="summary-content">
+                <!-- Customer & Delivery Details Section -->
+                <div class="summary-card">
+                    <h2 class="section-title">Customer &amp; Delivery Details</h2>
+                    <div class="details-grid">
+                        <div class="detail-item">
+                            <span class="detail-label">Name:</span>
+                            <span id="summary-name" class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Email:</span>
+                            <span id="summary-email" class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Phone:</span>
+                            <span id="summary-phone" class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Date:</span>
+                            <span id="summary-date" class="detail-value">-</span>
+                        </div>
+                        <div class="detail-item full-width">
+                            <span class="detail-label">Delivery Address:</span>
+                            <span id="summary-address" class="detail-value">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchased Items Section -->
+                <div class="summary-card">
+                    <h2 class="section-title">Items Purchased</h2>
+                    <div class="table-container">
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
+                                    <th class="text-right">Line Total</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="summary-items-tbody">
+                                <!-- Dynamic item rows with Add to Cart buttons -->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3" class="total-label">Grand Total</td>
+                                    <td id="summary-total" class="total-value text-right">₦0.00</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Action Button -->
+                <div class="summary-actions">
+                    <!-- TODO 5: Continue shopping button to clear cart and return to store -->
+                    <button type="button" id="continue-shopping-btn" class="continue-btn">Continue Shopping</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="summary.js" defer></script>
+</body>
+
+</html>
