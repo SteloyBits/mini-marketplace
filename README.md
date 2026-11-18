@@ -6,7 +6,7 @@ A simple online store built with HTML, CSS, and vanilla JavaScript. Visitors can
 
 | Role | Member | Owns | File(s) |
 |---|---|---|---|
-| **Member 1: Products** | Abdulsamad Baruwa | Product listing, search, category filter, and `products.json` fallback | `script.js` / `products.js` |
+| **Member 1: Products** | Abdulsamad Baruwa | Product listing, search, category filter, and `products.json` fallback | `products.js` |
 | **Member 2: Cart** | Udeme Enobong | `Cart` class, cart UI, add/remove/quantity, totals | `cart.js` |
 | **Member 3: Checkout** | Adeola Amowie | Checkout form, field validation, error messages | `checkout.js` |
 | **Member 4: Summary & Integration** | TitobiOluwa Soneye | Order summary, `localStorage`, page layout, app integration | `main.js`, `summary.js` |
