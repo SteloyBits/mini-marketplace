@@ -57,7 +57,7 @@ button {
 }
 
 button:hover {
-    background-color: yellowgreen;
+    background-color: #1d4ed8;
 }
 
 .status-message {
@@ -167,6 +167,17 @@ button:hover {
 .cart-btn:hover,
 .nav-link:hover {
     color: #1d4ed8;
+}
+
+.cart-badge {
+    display: inline-block;
+    background-color: #2563eb;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 7px;
+    border-radius: 999px;
+    margin-left: 4px;
 }
 
 .button-link {
