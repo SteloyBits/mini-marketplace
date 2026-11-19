@@ -382,3 +382,66 @@ button:hover {
         width: 100%;
     }
 }
+
+/* Checkout form */
+.checkout-container { 
+    max-width: 680px; 
+}
+
+.checkout-card { 
+    background: #fff; 
+    border: 1px solid #ddd; border-radius: 8px; padding: 24px; 
+}
+
+.form-field { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+    margin: 18px 0; 
+}
+
+.form-field label { 
+    font-weight: 700; 
+    font-size: 14px; 
+}
+
+.form-field input, .form-field textarea {
+     width: 100%; 
+     font: inherit; 
+     padding: 11px 12px; 
+     border: 1px solid #ccc; border-radius: 6px; 
+    }
+
+.form-field textarea { 
+    resize: vertical; 
+}
+
+.form-field input:focus, .form-field textarea:focus { 
+    outline: 2px solid #93c5fd; border-color: #2563eb; 
+}
+
+.form-field .invalid-field { 
+    border-color: #dc2626; background: #fffafa; 
+}
+
+.field-error { 
+    min-height: 0; color: #b91c1c; font-size: 13px; 
+}
+
+.checkout-alert { 
+    margin: 14px 0; 
+    padding: 12px; 
+    color: #991b1b; 
+    background: #fee2e2; 
+    border: 1px solid #fca5a5; border-radius: 6px; 
+}
+
+.checkout-total { 
+    display: flex; 
+    justify-content: space-between; padding: 16px 0; 
+    border-top: 1px solid #eee; font-size: 17px; 
+}
+
+.checkout-submit { 
+    width: 100%; 
+}
