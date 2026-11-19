@@ -60,7 +60,7 @@ function formatDate(dateString) {
     if (isNaN(date.getTime())) {
         return String(dateString);
     }
-    return date.toLocaleDateString("en-NG", {
+    return date.toLocaleString("en-NG", {
         dateStyle: "medium",
         timeStyle: "short"
     });
@@ -298,6 +298,20 @@ async function fetchFromDummyJsonApi() {
  * @returns {Promise<Object>}
  */
 async function fetchOrderData() {
+    // 0. Check URL hash fallback (for file:// navigation from checkout.html)
+    if (window.location.hash.startsWith("#order=")) {
+        try {
+            const fromHash = JSON.parse(decodeURIComponent(window.location.hash.slice(7)));
+            if (fromHash && typeof fromHash === "object") {
+                localStorage.setItem("latestOrder", JSON.stringify(fromHash));
+                history.replaceState(null, "", window.location.pathname + window.location.search);
+                return fromHash;
+            }
+        } catch (hashError) {
+            // Ignore malformed hash and proceed to localStorage
+        }
+    }
+
     // 1. Check localStorage for order placed by checkout
     const storedOrderRaw = localStorage.getItem("latestOrder") || localStorage.getItem("order");
     if (storedOrderRaw) {

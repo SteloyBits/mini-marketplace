@@ -127,7 +127,7 @@
       localStorage.setItem('latestOrder', JSON.stringify(order));
       localStorage.removeItem('cart');
       localStorage.removeItem('cartItems');
-      window.location.href = 'summary.html';
+      window.location.href = 'summary.html#order=' + encodeURIComponent(JSON.stringify(order));
     } catch (_) {
       errorBox.textContent = 'We could not save your order on this device. Please check your browser storage and try again.';
       errorBox.hidden = false;
