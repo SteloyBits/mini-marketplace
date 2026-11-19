@@ -171,7 +171,9 @@ function updateShopLinks() {
 }
 
 function renderCart() {
-    cartBadge.textContent = cart.getItemCount();
+    if (cartBadge) {
+        cartBadge.textContent = cart.getItemCount();
+    }
     updateShopLinks();
     cartItemsContainer.innerHTML = "";
 
