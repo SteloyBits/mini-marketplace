@@ -1,4 +1,4 @@
-const CART_STORAGE_KEY = "mini_marketplace_cart";
+const CART_STORAGE_KEY = "cart";
 
 function loadStoredCartItems() {
     if (window.location.hash.startsWith("#cart=")) {
@@ -194,7 +194,9 @@ function renderCart() {
 }
 
 checkoutBtn.addEventListener("click", function () {
-    window.location.href = "checkout.html";
+    window.location.href = cart.items.length > 0
+        ? "checkout.html#cart=" + encodeURIComponent(JSON.stringify(cart.items))
+        : "checkout.html";
 });
 
 window.addEventListener("pageshow", function () {

@@ -19,6 +19,18 @@ const ORDER_STORAGE_KEY = "latestOrder";
  * @returns {Array<Object>} Array of cart items: { id, title, price, quantity }
  */
 function getCartFromStorage() {
+    if (window.location.hash.startsWith("#cart=")) {
+        try {
+            const fromHash = JSON.parse(decodeURIComponent(window.location.hash.slice(6)));
+            if (Array.isArray(fromHash)) {
+                localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(fromHash));
+                history.replaceState(null, "", window.location.pathname + window.location.search);
+                return fromHash;
+            }
+        } catch (error) {
+            console.error("Error reading cart from URL hash:", error);
+        }
+    }
     try {
         const raw = localStorage.getItem(CART_STORAGE_KEY);
         if (raw) {
@@ -64,6 +76,7 @@ function addItemToCart(product, quantity = 1) {
             id: product.id,
             title: product.title,
             price: product.price,
+            thumbnail: product.thumbnail || "",
             quantity: quantity
         });
     }
@@ -101,6 +114,11 @@ function updateCartBadge() {
 
     badge.textContent = count;
     badge.hidden = count === 0;
+
+    const cart = getCartFromStorage();
+    cartBtn.href = cart.length > 0
+        ? "cart.html#cart=" + encodeURIComponent(JSON.stringify(cart))
+        : "cart.html";
 }
 
 /**

@@ -19,6 +19,16 @@
   };
 
   function getCart() {
+    if (window.location.hash.startsWith('#cart=')) {
+      try {
+        const fromHash = JSON.parse(decodeURIComponent(window.location.hash.slice(6)));
+        if (Array.isArray(fromHash)) {
+          localStorage.setItem('cart', JSON.stringify(fromHash));
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+          return fromHash.filter(item => item && Number(item.quantity) > 0);
+        }
+      } catch (_) {}
+    }
     try {
       const stored = localStorage.getItem('cart');
       const cart = stored ? JSON.parse(stored) : [];
