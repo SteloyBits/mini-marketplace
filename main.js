@@ -1,23 +1,6 @@
-/**
- * Member 4: Integration and Application Glue
- * File: main.js
- *
- * Responsibilities:
- * 1. Maintain cross-page shopping cart persistence in localStorage
- * 2. Listen for global "add-to-cart" events emitted by product.js or summary.js
- * 3. Dynamically update the header Cart badge count across pages
- * 4. Manage order persistence in localStorage for checkout-to-summary handoff
- * 5. Provide shared storage helpers for Member 2 (Cart) and Member 3 (Checkout)
- */
-
-// Storage Keys
 const CART_STORAGE_KEY = "cart";
 const ORDER_STORAGE_KEY = "latestOrder";
 
-/**
- * Retrieve the current cart array from localStorage.
- * @returns {Array<Object>} Array of cart items: { id, title, price, quantity }
- */
 function getCartFromStorage() {
     if (window.location.hash.startsWith("#cart=")) {
         try {
@@ -43,10 +26,6 @@ function getCartFromStorage() {
     return [];
 }
 
-/**
- * Save cart array to localStorage.
- * @param {Array<Object>} cart
- */
 function saveCartToStorage(cart) {
     try {
         localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
@@ -55,12 +34,6 @@ function saveCartToStorage(cart) {
     }
 }
 
-/**
- * Add a product to the cart in localStorage, incrementing quantity if already present.
- * Conforms to agreed Cart item contract: { id, title, price, quantity }.
- * @param {Object} product - { id, title, price }
- * @param {number} quantity - defaults to 1
- */
 function addItemToCart(product, quantity = 1) {
     if (!product || !product.id) return;
 
@@ -121,11 +94,6 @@ function updateCartBadge() {
         : "cart.html";
 }
 
-/**
- * Save placed order into localStorage for the summary screen.
- * Conforms to agreed Order contract: { orderId, customer, items, total, date }.
- * @param {Object} order
- */
 function saveLatestOrder(order) {
     try {
         localStorage.setItem(ORDER_STORAGE_KEY, JSON.stringify(order));
