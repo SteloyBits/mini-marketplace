@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - Peeqmart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cart-page">
+    <header class="site-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="brand-link">
+                <span class="brand-badge">P</span>
+                <span class="brand-name">Mini-Marketplace</span>
+            </a>
+
+            <nav class="nav-actions">
+                <a href="index.html" class="nav-link">Shop</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="cart-container">
+        <p class="cart-eyebrow">YOUR PICKS</p>
+        <h1 class="cart-heading">Your cart</h1>
+        <p class="cart-subtitle">Review your items before heading to checkout.</p>
+
+        <div id="cart-empty" class="cart-empty" hidden>
+            <p>Your cart is empty.</p>
+            <a href="index.html" class="checkout-btn">Continue shopping</a>
+        </div>
+
+        <div id="cart-items" class="cart-items"></div>
+
+        <div id="cart-summary" class="cart-summary" hidden>
+            <div class="subtotal-row">
+                <span>Subtotal</span>
+                <strong id="cart-subtotal">₦0.00</strong>
+            </div>
+            <button type="button" id="checkout-btn" class="checkout-btn">Continue to checkout</button>
+        </div>
+    </main>
+
+    <script src="cart.js" defer></script>
+</body>
+
+</html>
